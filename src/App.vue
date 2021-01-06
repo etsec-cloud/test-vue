@@ -1,17 +1,34 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="bg-gray-400">
+    <PokemonSearch @setPokemonUrl="setPokemonUrl"></PokemonSearch>
+
+    <PokeList @setPokemonUrl="setPokemonUrl" />
+    <PokeDetails :pokemonUrl="pokemonUrl"> </PokeDetails>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import PokeList from "./components/PokeList.vue";
+import PokeDetails from "./components/PokeDetails.vue";
+import PokemonSearch from "./components/PokemonSearch.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    PokeList,
+    PokeDetails,
+    PokemonSearch
+  },
+  methods: {
+    closeDetail() {
+      this.showDetail = false;
+    },
+    setPokemonUrl(url) {
+      this.pokemonUrl = url;
+      this.showDetail = true;
+    }
   }
-}
+};
 </script>
 
 <style>
@@ -21,6 +38,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
