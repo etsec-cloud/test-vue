@@ -1,15 +1,16 @@
 <template>
   <div>
     <div
+      class="flex justify-center items-center"
       v-for="(pokemon, index) in pokemons"
       :key="index"
       @click="setPokemonUrl(pokemon.url)"
     >
       <img
+        class="mx-3"
         :src="imageUrl + pokemon.id + '.png'"
         width="100"
         height="100"
-        alt=""
       />
       {{ pokemon.name }} : {{ pokemon.id }}
     </div>
